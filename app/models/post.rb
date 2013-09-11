@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
-  belongs_to :comments
-  belongs_to :user, through: :comments
+  has_many :comments
+  belongs_to :user
+  has_many :categorys
+
 end
