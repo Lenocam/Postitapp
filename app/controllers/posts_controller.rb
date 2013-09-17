@@ -3,20 +3,23 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def create
-    @posts = Post.new(params[:post].permit(:url, :title, :description))
-    if @post.save
-      redirect_to @post
-    else
-      render 'new'
+    def show
+    @post = Post.find(params[:id])
   end
 
-  def new
+ def new
     @post = Post.new
   end
 
-  def show
-    @post = Post.find(params[:id])
+  def create
+    @posts = Post.new(post_params)
+
+    if @post.save
+      flash[:notice] = "You created a post."
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -26,16 +29,16 @@ class PostsController < ApplicationController
   def update
      @post = Post.find(params[:id])
 
-    if @post.udate(params[:post].permit(:url, :title, :description))
-    redirect_to @post
+    if @post.udate(params[:post])
+      flash[:notice] = "You created a post"
+      redirect_to root_path
     else
-    render 'edit'
+      render :edit
     end  
   end
 
-  def patch
-  end
-
-  def put
+  private
+  def post_params
+    params.require(:post).permit!
   end
 end
