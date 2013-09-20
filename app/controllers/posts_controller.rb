@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @post = Post.all
   end
 
-    def show
+  def show
     @post = Post.find(params[:id])
   end
 
@@ -12,8 +12,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @posts = Post.new(post_params)
-
+    @post = Post.new(post_params)
     if @post.save
       flash[:notice] = "You created a post."
       redirect_to root_path
@@ -29,9 +28,9 @@ class PostsController < ApplicationController
   def update
      @post = Post.find(params[:id])
 
-    if @post.udate(params[:post])
-      flash[:notice] = "You created a post"
-      redirect_to root_path
+    if @post.update(post_params)
+      flash[:notice] = "You updated this post."
+      redirect_to post_path(@post)
     else
       render :edit
     end  

@@ -1,8 +1,4 @@
-<% if @post.errors.any? %>
-  <% @post.errors.full_messages.each do |msg| %>
-    <%= msg %>
-  <% end %>
-<% end %>
+<%= render 'shared/errors', obj: @post %>
 
 <%= form_for @post do |f| %>
   <%= f.label :title %>
