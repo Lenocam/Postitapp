@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def pretty_time(dt)
-    dt.strftime("%m/%d/%Y %1:%M%P %Z")
+    dt.strftime("%m/%d/%Y %I:%M%P %Z")
   end
 end

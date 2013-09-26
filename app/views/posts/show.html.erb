@@ -1,10 +1,27 @@
+<%= render 'shared/errors', obj: @comment %>
+
 <h3>Show Post</h3>
 <ul>
   <h4><%= link_to @post.title, fix_url(@post.url) %></h4>
 
-<% @post.categories.each do |category| %>
+
+<h6>Categories</h6>
+  <% @post.categories.each do |category| %>
   <li><%= category.name %></li>
 <% end %>
 </ul>
 
- 
+<h6>Comments</h6>
+
+
+
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.text_area :body %>
+  <p> <%= f.submit 'Create comment' %> </p>
+<% end %>
+<ul>
+
+  <% @post.comments.each do |comment| %>
+    <li><%= comment.body %></li>
+  <% end %>
+</ul>

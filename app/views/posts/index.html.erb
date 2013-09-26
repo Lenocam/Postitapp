@@ -1,13 +1,19 @@
 <h3>Welcome!</h3>
 
-<ul>
-  <% @post.each do |post| %>
-    <li>
-      <%= link_to post.title, post_path(post) %> (<%= link_to "edit", edit_post_path(post)%>)
-      <%= post.user.username if post.user %>
-      <br/>
-      
 
-    </li>
+<dl>
+  <% @post.each do |post| %>
+    <div class="well well-small">
+      <dt>
+        <%= link_to post.title, post_path(post) %> (<%= link_to "edit", edit_post_path(post)%>)</dt>
+
+      <dd>Post by <%= post.user.username if post.user %> on <%= pretty_time(post.created_at) %></dd>
+        <%= link_to "comments", post_path(post) %> (<%= post.comments.length %>)
+      <br/> 
+    </div>
   <% end %> 
-</ul>
+</dl>
+
+
+
+

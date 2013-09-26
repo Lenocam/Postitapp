@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
  def new
@@ -16,7 +17,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = User.find_by(params[:id])
     if @post.save
-      flash[:notice] = "You created a post."
+      flash[:notice] = "You've created a post."
       redirect_to root_path
     else
       render :new
