@@ -1,3 +1,10 @@
 <h3>Show Post</h3>
+<ul>
+  <h4><%= link_to @post.title, fix_url(@post.url) %></h4>
 
-<%= link_to @post.title, fix_url(@post.url) %>
+<% @post.categories.each do |category| %>
+  <li><%= category.name %></li>
+<% end %>
+</ul>
+
+ 
