@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
+  
   before_action :set_post, only:[:show, :edit, :update]
+  before_action :require_user, only:[:new, :create, :edit, :update]
 
   def index
     @post = Post.all
@@ -15,7 +17,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user = User.find_by(params[:id])
+    @post.user = current_user
     if @post.save
       flash[:notice] = "You've created a post."
       redirect_to root_path
@@ -38,7 +40,7 @@ class PostsController < ApplicationController
 
   private
   def set_post
-    @post = Post.find(params[:id])    
+    @post = Post.find(1)    
   end
 
   def post_params
