@@ -16,9 +16,9 @@ class SessionsController < ApplicationController
     end    
   end
 
-  def destroy #DELETE/Login
+  def destroy #GET/Log
     session[:user_id] = nil
-    flash[:notice] = "Logged out"
+    flash[:error] = "Logged out"
     redirect_to root_path    
   end
 

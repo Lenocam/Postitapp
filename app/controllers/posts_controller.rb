@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   
-  before_action :set_post, only:[:show, :edit, :update]
-  before_action :require_user, only:[:new, :create, :edit, :update]
+  before_action :set_post, only:[:show, :edit, :update, :vote]
+  before_action :require_user, only:[:new, :create, :edit, :update, :vote]
 
   def index
     @post = Post.all
@@ -38,9 +38,15 @@ class PostsController < ApplicationController
     end  
   end
 
+  def vote
+    Vote.create(voteable:@post, user:current_user, vote: params[:vote])
+    flash[:notice] = "Your vote counted. Witness Democracy in action!"
+    redirect_to root_path    
+  end
+
   private
   def set_post
-    @post = Post.find(1)    
+    @post = Post.find(params[:id])    
   end
 
   def post_params
