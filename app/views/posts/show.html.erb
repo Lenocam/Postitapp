@@ -1,29 +1,40 @@
 <%= render 'shared/errors', obj: @comment %>
 
-<h3>Show Post</h3>
-<ul>
-  <h3><%= link_to @post.title, fix_url(@post.url) %></h3>
-  <h6>Description</h6>
-  <li><%= @post.description %></li>
 
+<div class='row'>
+  <div class='span4'> 
+    <h3><%= link_to @post.title, fix_url(@post.url) %></h3>
+    
+      <p>Description</p>
+      <li><%= @post.description %></li>
 
+  <h6>Categories</h6>
+    <% @post.categories.each do |category| %>
+    <li><%= category.name %></li>
+    <% end %>
+  </div>
 
-<h6>Categories</h6>
-  <% @post.categories.each do |category| %>
-  <li><%= category.name %></li>
-<% end %>
-</ul>
+  
 
-<h6>Comments</h6>
+  <div class='span8'>
+    <h6>Comments</h6>
 
-<%= form_for [@post, @comment] do |f| %>
-  <%= f.label :body, "Your Thoughts" %>
-  <%= f.text_area :body %>
-  <p> <%= f.submit 'Create comment' %> </p>
-<% end %>
+    <% if logged_in? && current_user.admin? %>
+      <%= form_for [@post, @comment] do |f| %>
+       <%= f.label :body, "Your Thoughts" %>
+       <%= f.text_area :body %>
+        <p> <%= f.submit 'Create comment' %> </p>
+     <% end %>
+    <% end %>
+  </div>
+</div>
+<div class='well well-small'>
+    <dt>
+      <% @post.comments.each do |comment| %>
+      <%= link_to '+', vote_post_path(post.comments, vote: true) %> <li><%= comment.body %></li>
+      <% end %>
+    </dt>
+</div>
 
-<ul>
-  <% @post.comments.each do |comment| %>
-    <li><%= comment.body %></li>
-  <% end %>
-</ul>
+  
+

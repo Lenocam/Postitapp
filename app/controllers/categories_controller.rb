@@ -1,4 +1,7 @@
 class CategoriesController < ApplicationController
+
+  before_action :require_admin
+  
   def new
     @category = Category.new    
   end
@@ -12,5 +15,9 @@ class CategoriesController < ApplicationController
     else
       render :new    
     end
+  end
+
+  def show
+    @category = Category.find(params[:id])
   end
 end

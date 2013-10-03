@@ -7,6 +7,9 @@
       <%= link_to 'New Post', new_post_path %>
     </li>
     <li>
+      <%= link_to 'Edit Profile', edit_user_path(current_user) %>
+    </li>
+    <li>
       <%= link_to 'Log Out', logout_path %>
     </li>
    <% else %>
@@ -31,7 +34,7 @@
         <%= link_to category.name, category_path(category) %>
       </li>
     <% end %>
-    <% # if logged_in? %>
+    <% if logged_in? && current_user.admin? %>
       <li class='divider'></li>
       <li>
         <%= link_to(new_category_path) do %>
@@ -39,6 +42,6 @@
           New Category
         <% end %>
       </li>
-    <% #end %>
+    <% end %>
   </ul>
 </div>
