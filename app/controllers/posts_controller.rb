@@ -5,10 +5,12 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.all
+    @categories = Category.all
   end
 
   def show
     @comment = Comment.new
+    @comments = Comment.all 
   end
 
  def new

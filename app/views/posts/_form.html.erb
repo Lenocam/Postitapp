@@ -1,5 +1,7 @@
 <%= render 'shared/errors', obj: @post %>
 
+<div class='well well-small'>
+
 <%= form_for @post do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
@@ -16,4 +18,6 @@
   <% end %>
   <br/>
   <%= f.submit(@post.new_record? ? "Create Post" : "Update Post") %>
+
 <% end %>
+</div>

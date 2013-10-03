@@ -3,6 +3,15 @@
 
 <ul>
   <% @category.posts.each do |post| %>
-    <li><%= post.title %></li>
+    <div class='row'>
+      <div class='span8'>
+        <div class="well well-small">
+          <%= link_to post.title, post_path(post) %> (<%= link_to "edit", edit_post_path(post)%>)
+        <br/>
+        <dd>Post by <%= post.user.username %> on <%= pretty_time(post.created_at) %></dd>
+          <%= link_to "Comments", post_path(post) %> (<%= post.comments.size %>)
+        </div>
+      </div>
+    </div?
   <% end %>
 </ul>
