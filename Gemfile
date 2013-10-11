@@ -22,7 +22,7 @@ end
 group :development do
   gem 'quiet_assets'
   gem 'pry'
-  gem 'sqlite3'
+  gem 'sqlite3', '=1.3.8'
 end
 
 group :production do

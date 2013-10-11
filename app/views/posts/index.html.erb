@@ -8,7 +8,9 @@
         <div class="well">
             <div style="text-align: center;">
               <%= link_to '+', vote_post_path(post, vote: true), method: 'post', remote: true if logged_in? %>
+
               <span id="post_<%=post.slug%>_votes"><%= post.total_votes %></span>
+              
               <%= link_to '-', vote_post_path(post, vote: false), method: 'post', remote: true if logged_in? %>
             </div>
         </div>

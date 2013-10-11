@@ -1,0 +1,14 @@
+<dl>
+  <% @comments.each do |comment| %>
+    <div class='well well-small'>
+      <dt><%= comment.body %></dt>
+
+     <%= link_to '+', vote_post_comment_path(@post, comment, vote: true), method: 'post', remote: true if logged_in? %>
+      <strong id="comment_#{comment.id} %>" > [ <%= comment.total_votes %> ]</strong>
+       
+      <%= link_to '-', vote_post_comment_path(@post, comment, vote: false), method: 'post', remote: true if logged_in? %>
+      
+      <br/>
+      </div>
+      <% end %>
+</dl>
