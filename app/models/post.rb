@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   include VoteableReedOctober
+  include Sluggable
 
   has_many :comments
   belongs_to :user
@@ -9,15 +10,8 @@ class Post < ActiveRecord::Base
 
   validates :title, presence: true, length: {minimum: 5}
   validates :url, presence: true, length: {minimum: 5}
+  validates :description, presence: true
 
-  after_validation :generate_slug
-
-  def generate_slug
-    self.slug = self.title.gsub(' ', '-').downcase    
-  end
-
-  def to_param
-    self.slug    
-  end
+  sluggable_column :title
 
 end

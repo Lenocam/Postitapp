@@ -1,14 +1,23 @@
-<dl>
-  <% @comments.each do |comment| %>
+<% show_post ||= false %>
+
+<div class="comment_#{comment.id} %>" >
+  
     <div class='well well-small'>
       <dt><%= comment.body %></dt>
+      <% if logged_in? %>
+        <%= link_to vote_post_comment_path(@post, comment, vote: true), method: 'post', remote: true  do %>
+          <i class="icon-plus"></i>
+        <% end %>
+      <% end %>
+      <strong  id='<%="comment_#{comment.id}_votes"%>'> <%= comment.total_votes %> </strong>
 
-     <%= link_to '+', vote_post_comment_path(@post, comment, vote: true), method: 'post', remote: true if logged_in? %>
-      <strong id="comment_#{comment.id} %>" > [ <%= comment.total_votes %> ]</strong>
-       
-      <%= link_to '-', vote_post_comment_path(@post, comment, vote: false), method: 'post', remote: true if logged_in? %>
+      <% if logged_in? %>
+      <%= link_to vote_post_comment_path(@post, comment, vote: false), method: 'post', remote: true do %>
+        <i class="icon-minus"></i>
+        <% end %>
+      <% end %>
       
       <br/>
-      </div>
-      <% end %>
-</dl>
+    </div>
+  
+</div>

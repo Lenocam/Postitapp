@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
   
 
   def create
-    @comment = @post.comments.build(comment_params)
+    @post = Post.find_by slug: params[:post_id]
+    @comment = @post.comments.build(params.require(:comment).permit(:body))
     @comment.user = current_user
 
     if @comment.save
@@ -21,15 +22,10 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html do
         flash[:notice] = "Your vote counted!"
-        redirect_to post_path(params[:id])
+        redirect_to :back
       end
       format.js
     end
   end
-  
-  private
 
-  def comment_params
-    params.require(:comment).permit(:body)
-  end
 end

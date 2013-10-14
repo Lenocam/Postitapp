@@ -10,6 +10,5 @@ module ApplicationHelper
 
   def default_time_zone
     logged_in? && !current_user.time_zone.nil? ? current_user.time.zone : Time.zone.name
-    
   end
 end

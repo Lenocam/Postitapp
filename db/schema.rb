@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131001192507) do
+ActiveRecord::Schema.define(version: 20131011193710) do
 
   create_table "categories", force: true do |t|
     t.string "name"
+    t.string "slug"
   end
 
   create_table "categories_posts", force: true do |t|
@@ -61,6 +62,7 @@ ActiveRecord::Schema.define(version: 20131001192507) do
     t.string   "password_digest"
     t.string   "role"
     t.string   "time_zone"
+    t.string   "slug"
   end
 
   create_table "votes", force: true do |t|
