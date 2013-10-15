@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?
 
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
@@ -26,5 +27,9 @@ class ApplicationController < ActionController::Base
     flash[:error] = "You don't have permission to do that thing your're trying to do."
     redirect_to root_path      
     end
+  end
+
+  def default_time_zone
+    Time.zone = current_user.time_zone if logged_in?
   end
 end
