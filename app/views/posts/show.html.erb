@@ -2,30 +2,24 @@
 
 <h3><%= link_to @post.title, fix_url(@post.url) %></h3>
 <div class='row'>
-  <div class='span4'>
+  <div>
     <div class='well well-small'>
       <h5>Description</h5>
         <li><%= @post.description %></li>
 
-  <h5>Categories</h5>
-    <% @post.categories.each do |category| %>
-    <li><%= category.name %></li>
-    <% end %>
-    </div>
-  </div>
+        <h5>Categories</h5>
+          <% @post.categories.each do |category| %>
+            <p><%= category.name %></p>
+          <% end %>
 
-  <%= render "shared/errors", obj: @comment %>
-
-  <div class='span6'>
-    <div class='well well-small'>
-      <h5>Comments</h5>
-        <% if logged_in? && current_user.admin? %>
-          <%= form_for [@post, @comment] do |f| %>
-          <%= f.label :body, "What do you think about this post?" %>
-          <%= f.text_area :body %>
-          <p> <%= f.submit 'Create comment' %> </p>
-        <% end %>
-      <% end %>
+        <h5>Comments</h5>
+          <% if logged_in? && current_user.admin? %>
+            <%= form_for [@post, @comment] do |f| %>
+              <%= f.label :body, "What do you think about this post?" %>
+              <%= f.text_area :body %>
+              <p> <%= f.submit 'Create comment' %> </p>
+            <% end %>
+          <% end %>
     </div>
   </div>
 </div>

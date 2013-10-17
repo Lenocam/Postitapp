@@ -1,38 +1,9 @@
 <h3>Welcome!</h3>
 
-  <% @post.each do |post| %>
-    <div class='row'>
-      <div class='span2'>
-        <div class="well">
-            <div style="text-align: center;">
-              <% if logged_in? %>
-                <%= link_to vote_post_path(post, vote: true), method: 'post', 'data-remote' => true do %>
-                <i class="icon-plus"></i>
-                <% end %>
-              <% end %>
 
-              <strong id="post_<%=post.slug%>_votes"><%= post.total_votes %></strong>
-              <% if logged_in? %>
-                <%= link_to vote_post_path(post, vote: false), method: 'post', remote: true do %>
-                <i class="icon-minus"></i>
-                <% end %>
-              <% end %>
-            </div>
-        </div>
-      </div>
-      <div class='span8'>
-        <div class="well well-small">
-          <%= link_to post.title, post_path(post) %> (<%= link_to "edit", edit_post_path(post)%>)
-        <br/>
-         <small>Post by <%= post.user.username %> on <%= pretty_time(post.created_at) %></small>
-         <br>
-          <div><%= link_to "Comments", post_path(post) %> (<%= post.comments.size %>)</div>
-        </div>
-      </div>
-      <br/> 
-    </div> 
-  <% end %> 
-
+<% @post.each do |post| %>
+  <%= render 'posts/post', post: post %>
+<% end %>
 
 
 
