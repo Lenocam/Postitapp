@@ -5,12 +5,14 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.all
+    @post = Post.all.sort_by{|x| x.total_votes}.reverse
     @categories = Category.all
   end
 
   def show
     @comment = Comment.new
-    @comments = Comment.all 
+    @comments = Comment.all
+
   end
 
  def new

@@ -1,3 +1,4 @@
+<% if logged_in? && (current_user == @user || current_user.admin?) %>
 <h3><%= "#{@user.username}" %></h3>
 <div>
   <div class='row'>
@@ -13,13 +14,13 @@
 
   <div>
     <% @user.posts.each do |post| %>
-    <div class='span8 well well-small'>
-      <%= link_to post.title, post_path(post) %> (<%= link_to "edit", edit_post_path(post)%>)
-         posted on <%= pretty_time(post.created_at) %></small><br>
-          <div ><%= link_to "Comments", post_path(post) %> (<%= post.comments.size %>)</div>
-    </div>
+    
+     <%= render 'posts/post', post: post %> 
+    
     <% end %>
   </div>
+
+
   <div>
     <div class='span8 well well-small'>  
       <% @user.comments.each do |comment| %>
@@ -28,5 +29,7 @@
     </div>
   </div>
 </div>
+<% end %>
+ <div>
 
 
