@@ -6,10 +6,12 @@
       <div>
         <div class='span1 well text-center comment_votes'>
           <% if logged_in? %>
+          
             <%= link_to vote_post_comment_path(@post, comment, vote: true), method: 'post', remote: true  do %>
             <i class='icon-plus'></i>
             <% end %>
           <% end %>
+          
           <strong  id='<%="comment_#{comment.id}_votes"%>'> <%= comment.total_votes %> </strong>
           <% if logged_in? %>
             <%= link_to vote_post_comment_path(@post, comment, vote: false), method: 'post', remote: true do %>
@@ -28,5 +30,3 @@
     </div>
   </div>
 </div>
-
-
