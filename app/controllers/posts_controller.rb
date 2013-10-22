@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.all
-    @post = Post.all.sort_by{|x| x.total_votes}.reverse
+    @post = Post.all.sort_by {|x| x.total_votes}.reverse
     @categories = Category.all
   end
 
@@ -44,12 +44,8 @@ class PostsController < ApplicationController
 
   def vote
     Vote.create(voteable:@post, user:current_user, vote: params[:vote])
-
     respond_to do |format|
-      format.html do
-        flash[:notice] = "Your vote counted. Witness Democracy in action!"
-        redirect_to root_path
-      end
+      format.html { redirect_to :back, notice: "Your vote counted. Witness Democracy in action!" }
       format.js
     end
   end

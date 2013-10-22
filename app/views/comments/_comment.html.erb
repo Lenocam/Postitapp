@@ -1,32 +1,31 @@
 
 
-<div class="comment_#{comment.id} %>" >
-  <div class='row'>
-    <div class='span0'>
-      <div>
-        <div class='span1 well text-center comment_votes'>
-          <% if logged_in? %>
-          
-            <%= link_to vote_post_comment_path(@post, comment, vote: true), method: 'post', remote: true  do %>
-            <i class='icon-plus'></i>
-            <% end %>
+
+<div class='row'>
+  <div class='span0'>
+    <div>
+      <div class='span1 well text-center comment_votes'>
+        <% if logged_in? %>
+        
+          <%= link_to vote_post_comment_path(@post, comment, vote: true), method: 'post', remote: true  do %>
+          <i class='icon-plus'></i>
           <% end %>
-          
-          <strong  id='<%="comment_#{comment.id}_votes"%>'> <%= comment.total_votes %> </strong>
-          <% if logged_in? %>
-            <%= link_to vote_post_comment_path(@post, comment, vote: false), method: 'post', remote: true do %>
-            <i class="icon-minus"></i>
-            <% end %>
+        <% end %>
+        
+        <strong  id='<%="comment_#{comment.id}_votes"%>'> <%= comment.total_votes %> </strong>
+        <% if logged_in? %>
+          <%= link_to vote_post_comment_path(@post, comment, vote: false), method: 'post', remote: true do %>
+          <i class="icon-minus"></i>
           <% end %>
-        </div>
+        <% end %>
       </div>
     </div>
-  
+  </div>
 
-    <div class='span8'>
-      <div class='well well-small'>
-        <div><%= comment.body %></div>
-      </div>
+
+  <div class='span8'>
+    <div class='well well-small'>
+      <div><%= comment.body %></div>
     </div>
   </div>
 </div>
