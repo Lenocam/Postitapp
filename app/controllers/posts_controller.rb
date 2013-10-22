@@ -12,7 +12,6 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = Comment.all
-
   end
 
  def new

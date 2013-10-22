@@ -39,26 +39,29 @@
       <li class='divider'></li>
       <li>
         
-        <% if logged_in? %>
+        <% if logged_in? && if current_user.admin? %>
         <%= link_to(new_category_path) do %>
           <i class='icon-plus'></i>
           New Category
         <% end %>
       </li>
     <% end %>
+    <% end %>
   </ul>
 </div>
+
+
 <ul class='nav' id='state_of_play'>
   <% if logged_in? %>
-  <li>
-    <%= link_to 'Log Out', logout_path %>
-  </li>
+    <li>
+      <%= link_to 'Log Out', logout_path %>
+    </li>
   <% else %>
-  <li>
-    <%= link_to 'Register', new_user_path %>
-  </li>
-  <li>
-    <%= link_to 'Log In', login_path %>
-  </li>
+    <li>
+      <%= link_to 'Register', new_user_path %>
+    </li>
+    <li>
+      <%= link_to 'Log In', login_path %>
+    </li>
   <% end %>
 </ul>

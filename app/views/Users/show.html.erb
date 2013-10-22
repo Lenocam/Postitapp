@@ -20,16 +20,23 @@
     <% end %>
   </div>
 
-
-  <div>
-    <div class='span8 well well-small'>  
-      <% @user.comments.each do |comment| %>
-        <%= comment.body %>
-      <% end %>
+<h5><%="#{@user.username}'s Comments" %></h5>
+<div class='span8'>
+    <div class='well well-small'>
+      <div><% @user.comments.each do |comment| %>
+            <ul>
+              <li>"<%= comment.body %>" <%= comment.post.title %></li>
+            </ul>
+            <br>
+          <% end %>
+      </div>
     </div>
   </div>
-</div>
 <% end %>
- <div>
+
+
+
+
+  
 
 
