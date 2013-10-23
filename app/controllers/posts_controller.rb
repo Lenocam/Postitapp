@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   
   before_action :set_post, only:[:show, :edit, :update, :vote]
   before_action :require_user, only:[:new, :create, :edit, :update, :vote]
+  
 
   def index
     @post = Post.all
@@ -12,6 +13,7 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = Comment.all
+
   end
 
  def new
