@@ -1,0 +1,42 @@
+<% if logged_in? && (current_user == @user || current_user.admin?) %>
+<h3><%= "#{@user.username}" %></h3>
+<div>
+  <div class='row'>
+    <div class= 'span5 small well well'>
+      <h5>Email Address </h5>
+      <%= @user.email %>
+    </div>
+    <div class= 'span5 small well well'>
+      <h5>Time Zone</h5>
+      <%= @user.time_zone %>
+    </div>
+  </div>
+
+  <div>
+    <% @user.posts.each do |post| %>
+    
+     <%= render 'posts/post', post: post %> 
+    
+    <% end %>
+  </div>
+
+<h5><%="#{@user.username}'s Comments" %></h5>
+<div class='span8'>
+    <div class='well well-small'>
+      <div><% @user.comments.each do |comment| %>
+            <ul>
+              <li>"<%= comment.body %>" <%= comment.post.title %></li>
+            </ul>
+            <br>
+          <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+  
+
+
