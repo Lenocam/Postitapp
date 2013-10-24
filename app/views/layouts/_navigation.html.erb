@@ -39,7 +39,7 @@
       <li class='divider'></li>
       <li>
         
-        <% if logged_in? && if current_user.admin? %>
+        <% if logged_in? %>
         <%= link_to(new_category_path) do %>
           <i class='icon-plus'></i>
           New Category
