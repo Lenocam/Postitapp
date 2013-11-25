@@ -15,6 +15,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'bcrypt-ruby', '=3.0.1'
 gem 'voteable_Reed_October', '=0.1.0'
 gem 'kaminari'
+gem 'kaminari-bootstrap'
 
 group :doc do
   gem 'sdoc', require: false

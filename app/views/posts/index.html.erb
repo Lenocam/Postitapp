@@ -1,8 +1,7 @@
-<h3>Welcome <% if logged_in? %><%= "#{current_user.username}!" %> Check out our posts.</h3>
-<% end %>
+<h3>Welcome <% if logged_in? %> <%= "#{current_user.username}!" %> <% end %>Check out our posts.</h3>
+
 
 
 <% @post.each do |post| %>
   <%= render 'posts/post', post: post %>
 <% end %>
-
