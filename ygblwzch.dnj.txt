@@ -1,0 +1,25 @@
+﻿pick 198cbb1 made view/user folder lower case
+pick bc1e61b user-1
+pick b4d0f04 user
+pick fdefa3f no admin needed to make category
+pick 1b6bb86 fixed remove admin? for category build
+pick ae4a0e6 fixed view post/index
+
+# Rebase f44298d..ae4a0e6 onto f44298d
+#
+# Commands:
+#  p, pick = use commit
+#  r, reword = use commit, but edit the commit message
+#  e, edit = use commit, but stop for amending
+#  s, squash = use commit, but meld into previous commit
+#  f, fixup = like "squash", but discard this commit's log message
+#  x, exec = run command (the rest of the line) using shell
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
+
